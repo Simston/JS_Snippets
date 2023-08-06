@@ -7,3 +7,4 @@ function countDown(num) {
     num--;
     countDown(num);
 }
+countDown(5);
