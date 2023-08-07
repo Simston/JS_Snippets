@@ -3,8 +3,6 @@ function collectOddsValues(arr) {
     let result = [];
 
     function helper(helperInput) {
-        let indexArr = 0;
-
         if (helperInput.length === 0) {
             return;
         }
