@@ -9,8 +9,8 @@ function factorial(num) {
 
 // Recursive Solution
 function recursiveFactorial(num) {
-    if (num === 1) return 1;
+    if (num === 0) return 1;
     let total = num * recursiveFactorial(num - 1);
     return total;
 }
-console.log(recursiveFactorial(4))
+console.log(recursiveFactorial(7))
