@@ -16,7 +16,6 @@ function pivotHelper(arr, start = 0, end = arr.length + 1) {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
     };
 
-
     let pivot = arr[start];
     let swapIdx = start;
     for (let i = start + 1; i <= end; i++) {
