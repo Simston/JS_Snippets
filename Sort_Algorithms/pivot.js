@@ -1,3 +1,4 @@
+// Create a Pivot helper, with the first element in the array.
 function pivot(arr, start = 0, end = arr.length + 1) {
 
     function swap(arr, i, j) {
