@@ -44,6 +44,18 @@ class SinglyLinkedList {
         }
         return current;
     }
+    shift() {
+        if (!this.head) return undefined;
+
+        let current = this.head;
+        this.head = current.next;
+
+        this.length--;
+
+        if (this.length === 0) this.tail = null;
+
+        return current;
+    }
     // traverse() {
     //     let current = this.head;
     //     while (current) {
@@ -53,20 +65,16 @@ class SinglyLinkedList {
     // }
 }
 
+// TESTS
+
 let list = new SinglyLinkedList();
 list.push(1);
 list.push(4)
 list.push(98);
 list.push(8);
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
+
 console.log(list)
-
-
-// let first = new Node('Hi');
-// first.next = new Node('there');
-// first.next.next = new Node('how')
-// first.next.next.next = new Node('are')
-// first.next.next.next.next = new Node('you')
