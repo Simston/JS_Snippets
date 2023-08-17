@@ -78,6 +78,10 @@ class SinglyLinkedList {
 // TESTS
 
 let list = new SinglyLinkedList();
+list.push(1);
+list.push(4)
+list.push(98);
+list.push(8);
 
 console.log(list.unshift(11));
 
