@@ -66,6 +66,17 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
+    getValueOf(index) {
+        if (index < 0 || index > this.length - 1) return null;
+
+        let current = this.head;
+        for (let i = 0; i <= index; i++) {
+            current = current.next;
+            if (i === index) {
+                return current.val;
+            }
+        }
+    }
     traverse() {
         let current = this.head;
         while (current) {
@@ -84,4 +95,5 @@ list.push(98);
 list.push(8);
 
 console.log(list.unshift(11));
+console.log(list.getValueOf(2));
 
