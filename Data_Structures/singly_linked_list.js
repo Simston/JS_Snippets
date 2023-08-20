@@ -88,19 +88,17 @@ class SinglyLinkedList {
     insert(index, val) {
         if (index < 0 || index > this.length) return false;
 
-        if (index === 0) {
-            this.unshift(val);
-        } else if (index === this.length - 1) {
-            this.push(val);
-        } else {
+        if (index === 0) return this.unshift(val);
+        else if (index === this.length) return this.push(val);
+        else {
             let newNode = new Node(val);
             let previousNode = this.get(index - 1);
             let followingNode = previousNode.next;
             previousNode.next = newNode;
             newNode.next = followingNode;
             this.length++;
+            return true;
         }
-        return true;
     }
     traverse() {
         let current = this.head;
@@ -119,8 +117,6 @@ list.push(4)
 list.push(98);
 list.push(8);
 
-list.traverse()
-
-console.log(list.insert(2, 55))
+console.log(list.insert(5, "BRO"))
 list.traverse()
 
