@@ -88,8 +88,8 @@ class SinglyLinkedList {
     insert(index, val) {
         if (index < 0 || index > this.length) return false;
 
-        if (index === 0) return this.unshift(val);
-        else if (index === this.length) return this.push(val);
+        if (index === 0) return !!this.unshift(val);
+        else if (index === this.length) return !!this.push(val);
         else {
             let newNode = new Node(val);
             let previousNode = this.get(index - 1);
@@ -99,6 +99,17 @@ class SinglyLinkedList {
             this.length++;
             return true;
         }
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        let previousNode = this.get(index - 1);
+        let removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
     }
     traverse() {
         let current = this.head;
@@ -117,6 +128,6 @@ list.push(4)
 list.push(98);
 list.push(8);
 
-console.log(list.insert(5, "BRO"))
+console.log(list.remove(0))
 list.traverse()
 
