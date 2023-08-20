@@ -66,32 +66,25 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
-    getValueOf(index) {
+    get(index) {
         if (index < 0 || index > this.length - 1) return null;
 
         let current = this.head;
         for (let i = 0; i <= index; i++) {
             if (i === index) {
-                return current.val;
+                return current;
             }
             current = current.next;
 
         }
     }
-    setValueOf(index, val) {
-        if (index < 0 || index > this.length - 1) return null;
-
-        let current = this.head;
-
-        for (let i = 0; i <= index; i++) {
-
-            if (i === index) {
-                current.val = val;
-                return current.val;
-            }
-            current = current.next;
-
+    set(index, val) {
+        let foundNode = this.get(index);
+        if (foundNode) {
+            foundNode.val = val;
+            return true
         }
+        return false;
     }
     traverse() {
         let current = this.head;
@@ -110,6 +103,7 @@ list.push(4)
 list.push(98);
 list.push(8);
 
-console.log(list.getValueOf(2));
-console.log(list.setValueOf(4, 55))
+console.log(list.get(2));
+console.log(list.set(3, 55))
+list.traverse()
 
