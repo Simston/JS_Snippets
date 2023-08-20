@@ -75,7 +75,6 @@ class SinglyLinkedList {
                 return current;
             }
             current = current.next;
-
         }
     }
     set(index, val) {
@@ -86,10 +85,27 @@ class SinglyLinkedList {
         }
         return false;
     }
+    insert(index, val) {
+        if (index < 0 || index > this.length) return false;
+
+        if (index === 0) {
+            this.unshift(val);
+        } else if (index === this.length - 1) {
+            this.push(val);
+        } else {
+            let newNode = new Node(val);
+            let previousNode = this.get(index - 1);
+            let followingNode = previousNode.next;
+            previousNode.next = newNode;
+            newNode.next = followingNode;
+            this.length++;
+        }
+        return true;
+    }
     traverse() {
         let current = this.head;
         while (current) {
-            console.log(current);
+            console.log(current.val);
             current = current.next;
         }
     }
@@ -103,7 +119,8 @@ list.push(4)
 list.push(98);
 list.push(8);
 
-console.log(list.get(2));
-console.log(list.set(3, 55))
+list.traverse()
+
+console.log(list.insert(2, 55))
 list.traverse()
 
