@@ -71,10 +71,26 @@ class SinglyLinkedList {
 
         let current = this.head;
         for (let i = 0; i <= index; i++) {
-            current = current.next;
             if (i === index) {
                 return current.val;
             }
+            current = current.next;
+
+        }
+    }
+    setValueOf(index, val) {
+        if (index < 0 || index > this.length - 1) return null;
+
+        let current = this.head;
+
+        for (let i = 0; i <= index; i++) {
+
+            if (i === index) {
+                current.val = val;
+                return current.val;
+            }
+            current = current.next;
+
         }
     }
     traverse() {
@@ -94,6 +110,6 @@ list.push(4)
 list.push(98);
 list.push(8);
 
-console.log(list.unshift(11));
 console.log(list.getValueOf(2));
+console.log(list.setValueOf(4, 55))
 
