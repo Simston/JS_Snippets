@@ -111,6 +111,23 @@ class SinglyLinkedList {
         this.length--;
         return removed;
     }
+    reverse() {
+        let previous = null;
+        let current = this.head;
+        let following;
+
+        while (current !== null) {
+            // Save the next node
+            following = current.next;
+            // Change the 'next' pointer of 'current'
+            current.next = previous;
+            // Move `previous` and `current` one step forward
+            previous = current;
+            current = following;
+        }
+        // Swap the head and tail pointers
+        [this.head, this.tail] = [this.tail, this.head];
+    }
     traverse() {
         let current = this.head;
         while (current) {
@@ -127,7 +144,7 @@ list.push(1);
 list.push(4)
 list.push(98);
 list.push(8);
+list.reverse()
 
-console.log(list.remove(0))
 list.traverse()
 
