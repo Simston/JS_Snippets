@@ -26,17 +26,21 @@ class DoublyLinkedList {
         return this;
     }
     pop() {
+        // If the list is Empty, Return Undefined
         if (!this.head) return undefined;
-        let tmpReturn = this.tail;
+        // Store the node to be Removed
+        let nodeToRemove = this.tail;
+        // If ther's only one item in the list
         if (this.length === 1) {
             this.head = null;
             this.tail = null;
+        } else {
+            // Update the last item (tail) to point to the second last node
+            this.tail = nodeToRemove.prev;
+            this.tail.next = null;
         }
-        let newTail = tmpReturn.prev;
-        this.tail = newTail;
-        newTail.next = null;
         this.length--;
-        return tmpReturn;
+        return nodeToRemove;
     }
     shift() {
 
