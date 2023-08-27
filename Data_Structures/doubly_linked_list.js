@@ -75,7 +75,6 @@ class DoublyLinkedList {
         return this;
     }
     get(index) {
-
         if (index < 0 || index >= this.length) return null;
         let counter, currentNode;
 
@@ -98,6 +97,24 @@ class DoublyLinkedList {
         }
         return currentNode;
     }
+    set(index, val) {
+        if (index < 0 || index >= this.length) return null;
+
+        let nodeToModified = this.get(index);
+        nodeToModified.val = val;
+        return nodeToModified;
+    }
+    insert(index, val) {
+        if (index < 0 || index > this.length) return null;
+        if (index === 0) return this.unshift(val);
+        if (index === this.length) return this.push(val);
+
+        let newNode = new Node(val);
+        let previousNode = this.get(index - 1);
+        newNode.prev = previousNode;
+        newNode.next = previousNode.next;
+        previousNode.next = newNode;
+    }
 }
 
 let list = new DoublyLinkedList();
@@ -107,5 +124,6 @@ list.push(44);
 list.push(55);
 list.push(99);
 
-console.log(list.get(4));
+list.insert(2, 546)
+console.log(list.get(2));
 //console.log(list);
