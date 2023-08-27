@@ -76,31 +76,27 @@ class DoublyLinkedList {
     }
     get(index) {
 
-        if (index < 0 || index > this.length) return null;
-        let counter;
+        if (index < 0 || index >= this.length) return null;
+        let counter, currentNode;
 
+        //WORKING FROM END
         if (index >= (this.length / 2)) {
-            let currentNode = this.tail;
-            counter = this.length;
-            while (index <= counter) {
-                if (index === counter) {
-                    return currentNode;
-                }
+            currentNode = this.tail;
+            counter = this.length - 1;
+            while (counter !== index) {
                 currentNode = currentNode.prev;
                 counter--;
             }
-
+            //WORKING FROM BEGINNING
         } else {
-            let currentNode = this.head;
+            currentNode = this.head;
             counter = 0;
-            while (index >= counter) {
-                if (counter === index) {
-                    return currentNode;
-                }
+            while (counter !== index) {
                 currentNode = currentNode.next;
                 counter++;
             }
         }
+        return currentNode;
     }
 }
 
@@ -111,5 +107,5 @@ list.push(44);
 list.push(55);
 list.push(99);
 
-console.log(list.get(0));
+console.log(list.get(4));
 //console.log(list);
