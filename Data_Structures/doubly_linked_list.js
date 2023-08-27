@@ -42,6 +42,7 @@ class DoublyLinkedList {
         this.length--;
         return nodeToRemove;
     }
+    // Remove first Element of the List
     shift() {
         // If the list is Empty, Return Undefined
         if (!this.head) return undefined;
@@ -60,6 +61,7 @@ class DoublyLinkedList {
         this.length--;
         return nodeToRemove;
     }
+    // Adding one element with value, to the beginning of the list
     unshift(val) {
         let newNode = new Node(val);
         if (this.length === 0) {
@@ -105,9 +107,9 @@ class DoublyLinkedList {
         return nodeToModified;
     }
     insert(index, val) {
-        if (index < 0 || index > this.length) return null;
-        if (index === 0) return this.unshift(val);
-        if (index === this.length) return this.push(val);
+        if (index < 0 || index > this.length) return false;
+        if (index === 0) return !!this.unshift(val);
+        if (index === this.length) return !!this.push(val);
 
         let newNode = new Node(val);
         let beforeNode = this.get(index - 1);
@@ -121,6 +123,22 @@ class DoublyLinkedList {
         this.length++;
         return true;
     }
+    remove(index) {
+        if (index < 0 || index >= this.length) return false;
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+
+        let removedNode = this.get(index);
+        removedNode.prev.next = removedNode.next;
+        removedNode.next.prev = removedNode.prev;
+
+        removedNode.next = null;
+        removedNode.prev = null;
+
+        this.length--;
+        return removedNode;
+
+    }
 }
 
 let list = new DoublyLinkedList();
@@ -130,6 +148,5 @@ list.push(44);
 list.push(55);
 list.push(99);
 
-list.insert(2, 546)
-console.log(list.get(1));
-//console.log(list);
+list.remove(4)
+console.log(list);
