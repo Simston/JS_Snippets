@@ -43,10 +43,36 @@ class DoublyLinkedList {
         return nodeToRemove;
     }
     shift() {
-
+        // If the list is Empty, Return Undefined
+        if (!this.head) return undefined;
+        // Store the node to be Removed
+        let nodeToRemove = this.head;
+        // If ther's only one item in the list
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            // Update the last item (head) to point to the second last node
+            this.head = nodeToRemove.next;
+            this.head.prev = null;
+            nodeToRemove.next = null;
+        }
+        this.length--;
+        return nodeToRemove;
     }
-    unshift() {
-
+    unshift(val) {
+        let newNode = new Node(val);
+        if (this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            let oldHead = this.head;
+            oldHead.prev = newNode;
+            newNode.next = oldHead;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
     }
 }
 
@@ -57,5 +83,5 @@ list.push(44);
 list.push(55);
 list.push(99);
 
-list.pop()
+list.unshift(5)
 console.log(list);
